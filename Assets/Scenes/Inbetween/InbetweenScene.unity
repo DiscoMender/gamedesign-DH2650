@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015b17e332fb0a1488ebf608e24be2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneDataList:
+  - sceneBuildIndex: 0
+    sceneKey: FindTheKey
 --- !u!4 &745163493
 Transform:
   m_ObjectHideFlags: 0
