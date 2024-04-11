@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FindTheKey/FindTheKey.unity
     guid: 9a2b6a683d40ae443bb05a48929e28ee
+  - enabled: 1
+    path: Assets/Scenes/Mini-golf/Mini-golf.unity
+    guid: b9ab24e04f92b714098efa59c6c14952
   m_configObjects: {}

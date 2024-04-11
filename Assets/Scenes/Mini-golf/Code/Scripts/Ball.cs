@@ -75,6 +75,8 @@ public class Ball : MonoBehaviour
             gameObject.SetActive(false);
 
             //Level complete
+
+            PlayerStats.WinMinigame("Mini-golf");
         }
     }
 
