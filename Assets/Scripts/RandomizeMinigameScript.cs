@@ -20,6 +20,13 @@ public class RandomizeMinigameScript : MonoBehaviour
         
     }
 
+    public void StartRandomMinigame()
+    {
+        int randomIndex = Random.Range(0, sceneDataList.Count);
+        SceneData scene = sceneDataList[randomIndex];
+        SceneManager.LoadScene(scene.sceneBuildIndex);
+    }
+
 
     [System.Serializable]
     public class SceneData
