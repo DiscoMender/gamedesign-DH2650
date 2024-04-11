@@ -63,11 +63,11 @@ public class Ball : MonoBehaviour
 
     private void CheckWinState()
     {
-        if(inHole)
+        if (inHole)
         {
             return;
         }
-        if(rb.velocity.magnitude <= maxGoalSpeed)
+        if (rb.velocity.magnitude <= maxGoalSpeed)
         {
             inHole = true;
 
