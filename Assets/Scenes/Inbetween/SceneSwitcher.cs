@@ -2,30 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneSwitcher : MonoBehaviour
 {
 
     [SerializeField]
+    private string[] sceneNames;
+
+    [SerializeField]
     private Canvas canvas;
+
+    [SerializeField]
+    private Button button;
+
+    private bool newSceneIsLoaded = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        SceneData sceneData = new SceneData();
         
-        StartCoroutine(LoadNewScene("Mini-golf"));
-    
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-            
-        //     StartCoroutine(LoadNewScene("FindTheKey"));
-        // }
+        // if no scene is loaded and the screen is clicked, load a random scene
+        if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
+        {
+            LoadRandomScene();
+            newSceneIsLoaded = true;
+        }
     }
 
     IEnumerator LoadNewScene(string sceneName)
@@ -46,23 +53,19 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName)); // Sets the scene as the active scene
     }
 
-    public void returnToInbetween(string sceneName)
+    public void ReturnToInbetween(string sceneName)
     {
         SceneManager.UnloadSceneAsync(sceneName); // Unloads the minigame scene
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("InbetweenScene")); // Sets the inbetween scene as the active scene
         canvas.gameObject.SetActive(true); // Enables the canvas to show the stats
+        newSceneIsLoaded = false; // Resets the newSceneIsLoaded variable
     }
 
-    [System.Serializable]
-    public class SceneData
+    public void LoadRandomScene()
     {
-        public int sceneBuildIndex;
-        public string sceneKey;
-
-        //public void LoadScene() //Maybe 
+        int randomIndex = Random.Range(0, sceneNames.Length); // Generates a random index
+        Debug.Log("Attempting to start " + sceneNames[randomIndex]);
+        StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
     }
-
-    public List<SceneData> sceneDataList = new List<SceneData>();
-
 
 }

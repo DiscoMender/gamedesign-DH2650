@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour
     private static void RemoveScene(string sceneName)
     {
         // Tell the RandomizeMinigameScript to return to the inbetween scene
-        GameObject.Find("SceneList").GetComponent<SceneSwitcher>().returnToInbetween(sceneName);     
+        GameObject.Find("SceneList").GetComponent<SceneSwitcher>().ReturnToInbetween(sceneName);     
         
     }
 
