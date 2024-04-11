@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float moveSpeed = 8f;
+    public float moveSpeed = 3f;
 
     public Rigidbody2D Rb;
     public SpriteRenderer SR;
@@ -16,19 +16,28 @@ public class movement : MonoBehaviour
     public Transform Cam;
   
     Vector2 move;
+    Vector2 relativePos;
 
 	// Update is called once per frame
 	void Update()
     {
-        move.x = Input.GetAxisRaw("Horizontal");
-        move.y = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 touchPos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            relativePos = touchPos- Rb.position;
+            Debug.Log(relativePos);
+        }
+        else
+        {
+            relativePos = Vector2.zero;
+        }
 
-        if (Input.GetAxisRaw("Horizontal") == 1)
+        if (relativePos.x>0)
         {
             LookingLeft = false;
         }
-        else if (Input.GetAxisRaw("Horizontal") == -1)
+        else if (relativePos.x<0)
         {
             LookingLeft = true;
         }
@@ -36,7 +45,7 @@ public class movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        Rb.MovePosition(Rb.position + move * moveSpeed * Time.fixedDeltaTime);
+        Rb.MovePosition(Rb.position + relativePos* moveSpeed * Time.fixedDeltaTime);
         Light.position = Rb.position;
         Cam.position = Rb.position;
         SR.flipX = LookingLeft;
