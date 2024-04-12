@@ -351,5 +351,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 7369959942042263620}
-  remainingSeconds: 7
   isTimeRunning: 0

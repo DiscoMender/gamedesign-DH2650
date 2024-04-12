@@ -15,6 +15,8 @@ public class Bandit : MonoBehaviour
     //private bool m_isDead = false;
     public bool canJump = false;
     public bool dead = false;
+    [SerializeField]
+    private Timer timer;
 
     // Use this for initialization
     void Start()
@@ -124,6 +126,12 @@ public class Bandit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check timer
+        if (timer.remainingSeconds <= 0f)
+        {
+            PlayerStats.WinMinigame("Escaping");
+        }
+
         //Debug.Log(m_grounded);
 
         //Check if character just landed on the ground
