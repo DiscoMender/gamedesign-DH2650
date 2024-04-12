@@ -11,10 +11,13 @@ public class SceneSwitcher : MonoBehaviour
     private string[] sceneNames;
 
     [SerializeField]
+    private int sceneIndex = 0;
+    [SerializeField]
     private Canvas canvas;
 
     [SerializeField]
     private Button button;
+
 
     private bool newSceneIsLoaded = false;
 
@@ -30,7 +33,8 @@ public class SceneSwitcher : MonoBehaviour
         // if no scene is loaded and the screen is clicked, load a random scene
         if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
         {
-            LoadRandomScene();
+
+            LoadSequentialScene();
             newSceneIsLoaded = true;
         }
     }
@@ -69,4 +73,8 @@ public class SceneSwitcher : MonoBehaviour
         StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
     }
 
+    public void LoadSequentialScene() {
+        StartCoroutine(LoadNewScene(sceneNames[sceneIndex])); // Loads the scene at the current index
+        sceneIndex = (sceneIndex + 1) % sceneNames.Length; // Increments the index and wraps around if necessary
+    }
 }
