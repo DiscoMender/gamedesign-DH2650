@@ -16,6 +16,8 @@ public class SceneSwitcher : MonoBehaviour
     [SerializeField]
     private Button button;
 
+    private int sceneIndex = 0;
+
     private bool newSceneIsLoaded = false;
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class SceneSwitcher : MonoBehaviour
         // if no scene is loaded and the screen is clicked, load a random scene
         if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
         {
-            LoadRandomScene();
+            LoadSequentialScene();
             newSceneIsLoaded = true;
         }
     }
@@ -66,6 +68,11 @@ public class SceneSwitcher : MonoBehaviour
         int randomIndex = Random.Range(0, sceneNames.Length); // Generates a random index
         Debug.Log("Attempting to start " + sceneNames[randomIndex]);
         StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
+    }
+
+    public void LoadSequentialScene() {
+        StartCoroutine(LoadNewScene(sceneNames[sceneIndex])); // Loads the scene at the current index
+        sceneIndex = (sceneIndex + 1) % sceneNames.Length; // Increments the index and wraps around if necessary
     }
 
 }
