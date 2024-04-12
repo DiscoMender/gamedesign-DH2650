@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
 
     public static int score = 0;
     public static int lives = 3;
+    private static int maxLives = 3;
 
     [SerializeField]
     private TextMeshProUGUI ScoreDisplay;
@@ -64,6 +65,7 @@ public class PlayerStats : MonoBehaviour
         if (lives < 0) // TODO: Fix this awful hack
         {
             score = 0;
+            lives = maxLives - 1;
         }
         RemoveScene(sceneName);
     }
@@ -77,6 +79,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (lives == 0) {  // TODO: Fix this awful hack
             score = 0;
+            lives = maxLives;
         }
         AddScore();
         RemoveScene(sceneName);
