@@ -11,12 +11,13 @@ public class SceneSwitcher : MonoBehaviour
     private string[] sceneNames;
 
     [SerializeField]
+    private int sceneIndex = 0;
+    [SerializeField]
     private Canvas canvas;
 
     [SerializeField]
     private Button button;
 
-    private int sceneIndex = 0;
 
     private bool newSceneIsLoaded = false;
 
