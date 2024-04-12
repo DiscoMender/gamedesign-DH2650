@@ -7,7 +7,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TMP_Text timer;
-    public static float remainingSeconds = 20f;
+    [SerializeField] 
+    public float remainingSeconds = 20f;
     public bool isTimeRunning;
   
     void Start()
@@ -41,8 +42,8 @@ public class Timer : MonoBehaviour
         timer.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 
-    public static float showRemainingTime()
+    /*public static float showRemainingTime()
     {
         return remainingSeconds;
-    }
+    }*/
 }
