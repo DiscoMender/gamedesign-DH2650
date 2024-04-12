@@ -31,7 +31,14 @@ public class PlayerStats : MonoBehaviour
     private void UpdateUI()
     {
         ScoreDisplay.text = "Score: " + score.ToString();
-        LivesDisplay.text = "Lives: " + lives.ToString();
+        if (lives > 0) {
+            LivesDisplay.text = "Lives: " + lives.ToString();
+        }   
+        else
+        {
+            LivesDisplay.text = "You lost all lives, game over!";
+            
+        }
     }
 
     private static void AddScore()
@@ -54,6 +61,10 @@ public class PlayerStats : MonoBehaviour
     public static void LoseMinigame(string sceneName)
     {
         lives--;
+        if (lives < 0) // TODO: Fix this awful hack
+        {
+            score = 0;
+        }
         RemoveScene(sceneName);
     }
 
@@ -64,6 +75,9 @@ public class PlayerStats : MonoBehaviour
     */
     public static void WinMinigame(string sceneName)
     {
+        if (lives == 0) {  // TODO: Fix this awful hack
+            score = 0;
+        }
         AddScore();
         RemoveScene(sceneName);
     }

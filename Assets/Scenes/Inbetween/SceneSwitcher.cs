@@ -33,6 +33,7 @@ public class SceneSwitcher : MonoBehaviour
         // if no scene is loaded and the screen is clicked, load a random scene
         if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
         {
+
             LoadSequentialScene();
             newSceneIsLoaded = true;
         }
@@ -75,5 +76,4 @@ public class SceneSwitcher : MonoBehaviour
         StartCoroutine(LoadNewScene(sceneNames[sceneIndex])); // Loads the scene at the current index
         sceneIndex = (sceneIndex + 1) % sceneNames.Length; // Increments the index and wraps around if necessary
     }
-
 }
