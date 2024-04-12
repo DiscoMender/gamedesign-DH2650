@@ -16,7 +16,8 @@ public class movement : MonoBehaviour
     public Transform Cam;
   
     Vector2 move;
-    Vector2 relativePos;
+
+    private Vector2 movementDirection;
 
 	// Update is called once per frame
 	void Update()
@@ -25,18 +26,20 @@ public class movement : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector2 touchPos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            relativePos = touchPos- Rb.position;
+            Vector2 relativePos = touchPos- Rb.position;
+            movementDirection = relativePos.normalized;
+
         }
         else
         {
-            relativePos = Vector2.zero;
+            movementDirection = Vector2.zero;
         }
 
-        if (relativePos.x>0)
+        if (movementDirection.x>0)
         {
             LookingLeft = false;
         }
-        else if (relativePos.x<0)
+        else if (movementDirection.x<0)
         {
             LookingLeft = true;
         }
@@ -44,7 +47,7 @@ public class movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        Rb.MovePosition(Rb.position + relativePos* moveSpeed * Time.fixedDeltaTime);
+        Rb.MovePosition(Rb.position + movementDirection* moveSpeed * Time.fixedDeltaTime);
         Light.position = Rb.position;
         Cam.position = Rb.position;
         SR.flipX = LookingLeft;
