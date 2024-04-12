@@ -65,6 +65,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         int randomIndex = Random.Range(0, sceneNames.Length); // Generates a random index
         Debug.Log("Attempting to start " + sceneNames[randomIndex]);
+        //StartCoroutine(LoadNewScene("Escaping"));
         StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
     }
 

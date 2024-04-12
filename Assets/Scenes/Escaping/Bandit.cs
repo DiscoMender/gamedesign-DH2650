@@ -4,15 +4,15 @@ using System.Collections;
 public class Bandit : MonoBehaviour
 {
 
-    [SerializeField] float m_speed = 4.0f;
+    //[SerializeField] float m_speed = 4.0f;
     [SerializeField] float m_jumpForce = 7.5f;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_Bandit m_groundSensor;
     private bool m_grounded = false;
-    private bool m_combatIdle = false;
-    private bool m_isDead = false;
+    //private bool m_combatIdle = false;
+    //private bool m_isDead = false;
     public bool canJump = false;
     public bool dead = false;
 
@@ -175,73 +175,9 @@ public class Bandit : MonoBehaviour
         else
         {
             m_animator.SetTrigger("Death");
+            PlayerStats.LoseMinigame("Escaping");
         }
 
-
-
-
-
-        //            // Move
-        //            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-
-        //    //Set AirSpeed in animator
-        //    m_animator.SetFloat("AirSpeed", m_body2d.velocity.y);
-
-        //    // -- Handle Animations --
-        //    //Death
-        //    if (Input.GetKeyDown("e"))
-        //    {
-        //        if (!m_isDead)
-        //            m_animator.SetTrigger("Death");
-        //        else
-        //            m_animator.SetTrigger("Recover");
-
-        //        m_isDead = !m_isDead;
-        //    }
-
-        //    //Hurt
-        //    else if (Input.GetKeyDown("q"))
-        //        m_animator.SetTrigger("Hurt");
-
-        //    //Attack
-        //    else if (Input.GetMouseButtonDown(1))
-        //    {
-        //        m_animator.SetTrigger("Attack");
-        //    }
-
-        //    //Change between idle and combat idle
-        //    else if (Input.GetKeyDown("f"))
-        //        m_combatIdle = !m_combatIdle;
-
-        //    //Jump
-        //    else if (canJump && m_grounded)
-        //    {
-
-        //        m_animator.SetTrigger("Jump");
-        //        canJump = false;
-        //        m_grounded = false;
-        //        m_animator.SetBool("Grounded", m_grounded);
-        //        m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
-        //        m_groundSensor.Disable(0.2f);
-        //    }
-
-        //    //Run
-        //    else if (Mathf.Abs(inputX) > Mathf.Epsilon)
-        //        m_animator.SetInteger("AnimState", 2);
-
-        //    //Combat Idle
-        //    else if (m_combatIdle)
-        //        m_animator.SetInteger("AnimState", 1);
-
-        //    //Idle
-        //    else
-        //        m_animator.SetInteger("AnimState", 0);
-        //}
-
-        //public void Jump()
-        //{
-        //    canJump = true;
-        //}
     }
 }
 
