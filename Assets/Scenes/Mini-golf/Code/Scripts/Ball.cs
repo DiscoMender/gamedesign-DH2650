@@ -31,7 +31,7 @@ public class Ball : MonoBehaviour
         Vector2 inputPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distance = Vector2.Distance(transform.position, inputPos);
 
-        if (Input.GetMouseButtonDown(0) && distance <= 0.5f) DragStart();
+        if (Input.GetMouseButtonDown(0)) DragStart();
         if (Input.GetMouseButton(0) && isDragging) DragChange(inputPos);
         if (Input.GetMouseButtonUp(0) && isDragging) DragRelease(inputPos);
     }
