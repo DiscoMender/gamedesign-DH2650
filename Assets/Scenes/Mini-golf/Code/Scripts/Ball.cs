@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private float maxPower = 10f;
     [SerializeField] private float power = 2f;
     [SerializeField] private float maxGoalSpeed = 4f;
+    [SerializeField] private Timer timer;
 
     private bool isDragging;
     private bool inHole;
@@ -19,6 +20,10 @@ public class Ball : MonoBehaviour
     private void Update()
     {
         PlayerInput();
+        if (timer.remainingSeconds <= 0f)
+        {
+            PlayerStats.LoseMinigame("Mini-golf");
+        }
     }
 
     private void PlayerInput()
