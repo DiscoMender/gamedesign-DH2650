@@ -26,7 +26,6 @@ public class movement : MonoBehaviour
         {
             Vector2 touchPos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
             relativePos = touchPos- Rb.position;
-            Debug.Log(relativePos);
         }
         else
         {
