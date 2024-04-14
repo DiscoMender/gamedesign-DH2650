@@ -54,7 +54,7 @@ public class ShootArrow : MonoBehaviour
         float currentAngle = aimingIndicator.transform.rotation.eulerAngles.z % 360;
         if (currentAngle < 0) currentAngle += 360;
 
-        if ((maxAngle > minAngle) && (currentAngle < minAngle) ^ (currentAngle > maxAngle)) { // XOR if max > min
+        if ((maxAngle > minAngle) && ((currentAngle < minAngle) ^ (currentAngle > maxAngle))) { // XOR if max > min
             RotateClockwise = !RotateClockwise;
         }
         else if (currentAngle < minAngle && currentAngle > maxAngle) {
