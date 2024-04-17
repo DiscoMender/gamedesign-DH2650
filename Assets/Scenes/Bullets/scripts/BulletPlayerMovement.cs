@@ -16,10 +16,10 @@ public class BulletPlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //if (timer.remainingSeconds <= 0f)
-        //{
-        //PlayerStats.WinMinigame("NAME HERE");
-        //}
+        if (timer.remainingSeconds <= 0f)
+        {
+            PlayerStats.WinMinigame("Bullets");
+        }
 
         if (Input.GetMouseButton(0))
         {
@@ -46,6 +46,6 @@ public class BulletPlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //PlayerStats.LoseMinigame("NAME HERE");
+        PlayerStats.LoseMinigame("Bullets");
     }
 }
