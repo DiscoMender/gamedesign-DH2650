@@ -11,9 +11,9 @@ public class movement : MonoBehaviour
 
     public bool LookingLeft = false;
 
-    public Transform Light;
+    //public Transform Light;
 
-    public Transform Cam;
+    //public Transform Cam;
   
     Vector2 move;
 
@@ -48,8 +48,8 @@ public class movement : MonoBehaviour
 	void FixedUpdate()
 	{
         Rb.MovePosition(Rb.position + movementDirection* moveSpeed * Time.fixedDeltaTime);
-        Light.position = Rb.position;
-        Cam.position = Rb.position;
+        //Light.position = Rb.position;
+        //Cam.position = Rb.position;
         SR.flipX = LookingLeft;
 	}
 }
