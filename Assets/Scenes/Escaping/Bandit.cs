@@ -31,6 +31,8 @@ public class Bandit : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
+
+        timer.isCountDown = false;
     }
 
     private GameObject lastCollidedObject = null; // Broader scope variable
