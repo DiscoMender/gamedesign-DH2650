@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     [SerializeField] TMP_Text timer;
     [SerializeField] public float remainingSeconds = 20f;
     public bool isTimeRunning;
+    public static bool isCountDown = true;
     private bool isBlinking = false;
     private bool isFirstTime = true;
     private float inicialTime;
@@ -16,40 +17,39 @@ public class Timer : MonoBehaviour
     void Start()
     {
         isTimeRunning = true;
-        remainingSeconds += 1;
+        //remainingSeconds += 1;
         inicialTime = remainingSeconds;
     }
 
     void Update()
     {
+        if (remainingSeconds <= 0)
+        {
+            isTimeRunning = false;
+        }
+
         if (isTimeRunning)
         {
-            remainingSeconds -= Time.deltaTime;
-            if (remainingSeconds > 0)
+            if (remainingSeconds < (inicialTime * 0.6) && remainingSeconds > (inicialTime * 0.4))
             {
-                if (remainingSeconds < (inicialTime*0.6) && remainingSeconds > (inicialTime*0.4))
-                {
-                    timer.color = new Color(255, 255, 0, 255); // Yellow
-                    isBlinking = false;
-                }
-                else if (remainingSeconds <= (inicialTime * 0.4))
-                {
-                    isBlinking = true;
-                    //StartCoroutine(BlinkText());
-                }
-                DisplayTime(remainingSeconds);
+                timer.color = new Color(255, 255, 0, 255); // Yellow
+                isBlinking = false;
             }
-            else
+            else if (remainingSeconds <= (inicialTime * 0.4))
             {
-                remainingSeconds = 0;
-                //gameOver();
+                isBlinking = true;
+                //StartCoroutine(BlinkText());
+            }
+            DisplayTime(remainingSeconds);
+          
+            if (isBlinking && isFirstTime)
+            {
+                StartCoroutine(BlinkText());
+                isFirstTime = false;
             }
         }
-        if (isBlinking && isFirstTime)
-        {
-            StartCoroutine(BlinkText());
-            isFirstTime = false;
-        }
+
+        remainingSeconds -= Time.deltaTime;
     }
 
     IEnumerator BlinkText()
@@ -71,8 +71,4 @@ public class Timer : MonoBehaviour
     }
 }
 
-    /*public static float showRemainingTime()
-    {
-        return remainingSeconds;
-    }*/
 
