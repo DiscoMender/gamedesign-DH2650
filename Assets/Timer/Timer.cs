@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     [SerializeField] TMP_Text timer;
     [SerializeField] public float remainingSeconds = 20f;
     public bool isTimeRunning;
-    public static bool isCountDown = true;
+    public bool isCountDown = true;
     private bool isBlinking = false;
     private bool isFirstTime = true;
     private float inicialTime;
@@ -17,7 +17,6 @@ public class Timer : MonoBehaviour
     void Start()
     {
         isTimeRunning = true;
-        //remainingSeconds += 1;
         inicialTime = remainingSeconds;
     }
 
@@ -30,7 +29,19 @@ public class Timer : MonoBehaviour
 
         if (isTimeRunning)
         {
-            if (remainingSeconds < (inicialTime * 0.6) && remainingSeconds > (inicialTime * 0.4))
+            if (remainingSeconds >= (inicialTime * 0.6))
+            {
+                if (isCountDown)
+                {
+                    timer.color = new Color(0, 255, 0, 255); //Green
+                }
+                else
+                {
+                    timer.color = new Color(255, 0, 0, 255); // Red
+                }
+               
+            }
+            else if (remainingSeconds < (inicialTime * 0.6) && remainingSeconds > (inicialTime * 0.4))
             {
                 timer.color = new Color(255, 255, 0, 255); // Yellow
                 isBlinking = false;
@@ -38,8 +49,8 @@ public class Timer : MonoBehaviour
             else if (remainingSeconds <= (inicialTime * 0.4))
             {
                 isBlinking = true;
-                //StartCoroutine(BlinkText());
             }
+
             DisplayTime(remainingSeconds);
           
             if (isBlinking && isFirstTime)
@@ -56,10 +67,20 @@ public class Timer : MonoBehaviour
     {
         while (isBlinking)
         {
-            timer.color = new Color(255, 0, 0, 255); // Red
-            yield return new WaitForSeconds(0.5f);
-            timer.color = new Color(255, 255, 255, 100); // White
-            yield return new WaitForSeconds(0.5f);
+            if (isCountDown)
+            {
+                timer.color = new Color(255, 0, 0, 255); // Red
+                yield return new WaitForSeconds(0.5f);
+                timer.color = new Color(255, 255, 255, 100); // White
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                timer.color = new Color(0, 255, 0, 255); //Green
+                yield return new WaitForSeconds(0.5f);
+                timer.color = new Color(255, 255, 255, 100); // White
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 
