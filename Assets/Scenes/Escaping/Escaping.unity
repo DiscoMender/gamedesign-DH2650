@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 100282530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.25, y: 1.93, z: 0}
+  m_LocalPosition: {x: 41.96, y: 0.05, z: 0}
   m_LocalScale: {x: -2.0371, y: 2.0371, z: 2.0371}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enspeed: 5
+  animator: {fileID: 0}
 --- !u!850595691 &127723081
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2069,7 +2070,7 @@ PrefabInstance:
     - target: {fileID: 114850797635947820, guid: 2e2183501755a214591e802f3aff33d2,
         type: 3}
       propertyPath: attarkRange
-      value: 5.22
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 114850797635947820, guid: 2e2183501755a214591e802f3aff33d2,
         type: 3}
@@ -5270,7 +5271,7 @@ Transform:
   m_GameObject: {fileID: 1779151447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.67, y: 2.89, z: 0}
+  m_LocalPosition: {x: 4.45, y: -0.08, z: 0}
   m_LocalScale: {x: -2.0371, y: 2.0371, z: 2.0371}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5334,6 +5335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enspeed: 5
+  animator: {fileID: 1779151448}
 --- !u!1001 &1780053653
 PrefabInstance:
   m_ObjectHideFlags: 0

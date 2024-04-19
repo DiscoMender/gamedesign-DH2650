@@ -22,6 +22,9 @@ public class Bandit : MonoBehaviour
     public float attarkRange = 0.58f;
     public LayerMask enemyLayers;
 
+    public float attackDuration = 0.5f;  // Duration of the attack in seconds
+
+
     // Use this for initialization
     void Start()
     {
@@ -43,10 +46,14 @@ public class Bandit : MonoBehaviour
         }
     }
 
+    //IEnumerator Attark()
     void Attark()
     {
         // Play Animation
         m_animator.SetTrigger("Attack");
+
+        // Wait half of the attack duration before detecting enemies
+        //yield return new WaitForSeconds(attackDuration / 2);
 
         // Detact enemies in range of attark
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attarkPoint.position, attarkRange, enemyLayers);
@@ -57,6 +64,9 @@ public class Bandit : MonoBehaviour
             Debug.Log("We hit" +  enemy.name);
             enemy.GetComponent<Enemy>().Die();
         }
+
+        // Wait for the second half of the attack duration
+        //yield return new WaitForSeconds(attackDuration / 2);
     }
 
     void OnDrawGizmosSelected()
@@ -115,6 +125,7 @@ public class Bandit : MonoBehaviour
             {
                 //Debug.Log("Right");
                 Attark();
+                //StartCoroutine(Attack());
                 //m_body2d.velocity = new Vector2(m_jumpForce,m_body2d.velocity.y);
             }
         }
