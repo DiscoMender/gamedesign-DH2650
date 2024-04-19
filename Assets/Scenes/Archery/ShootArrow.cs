@@ -103,6 +103,9 @@ public class ShootArrow : MonoBehaviour
                     Destroy(arrow);
                     targets.Remove(target);
                     Destroy(target);
+                    if (targets.Count == 0) {
+                        PlayerStats.WinMinigame("Archery");
+                    }
                     break;
                 }
             }
