@@ -260,7 +260,8 @@ MonoBehaviour:
   - Mini-golf
   - FindTheKey
   - Escaping
-  sceneIndex: 0
+  - RoadWithBoxes
+  sceneIndex: 3
   canvas: {fileID: 97106656}
   button: {fileID: 0}
 --- !u!4 &745163493
