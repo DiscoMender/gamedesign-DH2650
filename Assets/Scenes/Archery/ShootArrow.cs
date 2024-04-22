@@ -82,7 +82,7 @@ public class ShootArrow : MonoBehaviour
     }
 
     private void Shoot() {
-        GameObject arrow = Instantiate(arrowPrefab, playerModel.transform.position, aimingIndicator.transform.rotation);
+        GameObject arrow = Instantiate(arrowPrefab, aimingIndicator.transform.position, aimingIndicator.transform.rotation);
         arrows.Add(arrow);
     }
 
