@@ -260,8 +260,10 @@ MonoBehaviour:
   - Mini-golf
   - FindTheKey
   - Escaping
+  - Bullets
   - RoadWithBoxes
-  sceneIndex: 3
+  - Archery
+  sceneIndex: 0
   canvas: {fileID: 97106656}
   button: {fileID: 0}
 --- !u!4 &745163493
