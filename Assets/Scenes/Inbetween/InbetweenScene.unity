@@ -262,6 +262,7 @@ MonoBehaviour:
   - Escaping
   - Bullets
   - RoadWithBoxes
+  - Archery
   sceneIndex: 0
   canvas: {fileID: 97106656}
   button: {fileID: 0}
