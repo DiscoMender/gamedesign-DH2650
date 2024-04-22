@@ -9,6 +9,7 @@ public class ShootArrow : MonoBehaviour
     [SerializeField] private GameObject playerModel;
     [SerializeField] private GameObject aimingIndicator;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Timer timer;
 
     [SerializeField] private float minAngle;
     [SerializeField] private float maxAngle;
@@ -70,6 +71,11 @@ public class ShootArrow : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Clicked();
+        }
+
+        if (timer.remainingSeconds <= 0f)
+        {
+            PlayerStats.LoseMinigame("Archery");
         }
     }
 
