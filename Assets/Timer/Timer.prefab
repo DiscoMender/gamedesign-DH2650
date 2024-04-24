@@ -284,3 +284,4 @@ MonoBehaviour:
   timer: {fileID: 7369959942042263620}
   remainingSeconds: 20
   isTimeRunning: 0
+  isCountDown: 1
