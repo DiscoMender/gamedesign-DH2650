@@ -109,7 +109,7 @@ public class AzureusEscaping : MonoBehaviour
         //    dead = true;
         //}
 
-        transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+        //transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 
         if (Input.touchCount > 0 && !dead)
         {
