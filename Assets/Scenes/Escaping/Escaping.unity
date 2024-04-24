@@ -1216,7 +1216,7 @@ Transform:
   m_GameObject: {fileID: 489998866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.104, y: -0.002, z: 0}
+  m_LocalPosition: {x: 0.252, y: -0.002, z: 0}
   m_LocalScale: {x: -0.38081676, y: 0.38081676, z: 0.38081676}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3550,7 +3550,7 @@ Transform:
   m_GameObject: {fileID: 1338656807}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007, y: -0.104, z: 0}
+  m_LocalPosition: {x: 0.001, y: -0.3, z: 0}
   m_LocalScale: {x: -0.38081676, y: 0.38081676, z: 0.38081676}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3941,7 +3941,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -690634930, guid: 3ab88b18ffdabdc4e96c86f4c45789b3, type: 3}
+  m_Sprite: {fileID: 1954751222, guid: 1dfc8a4c320ea494e8e80ea445f5aac6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3962,7 +3962,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0.19, z: 0}
-  m_LocalScale: {x: 4.328066, y: 4.328066, z: 4.328066}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1338656808}
@@ -3986,7 +3986,7 @@ MonoBehaviour:
   dead: 0
   timer: {fileID: 1884079120}
   attarkPoint: {fileID: 489998867}
-  attarkRange: 1.64
+  attarkRange: 1.91
   enemyLayers:
     serializedVersion: 2
     m_Bits: 524288
@@ -4023,18 +4023,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000014901161, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.14, y: 0.18}
+    oldSize: {x: 0.4375, y: 0.5625}
     newSize: {x: 0.14, y: 0.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.18}
+  m_Size: {x: 0.46380064, y: 0.5833305}
   m_EdgeRadius: 0
 --- !u!50 &1380315650
 Rigidbody2D:
