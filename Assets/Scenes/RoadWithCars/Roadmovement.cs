@@ -11,6 +11,11 @@ public class movement : MonoBehaviour
 
     public bool LookingLeft = false;
 
+    private float speed;
+    public Animator animator;
+
+    private Vector2 relativePos;
+
     //public Transform Light;
 
     //public Transform Cam;
@@ -26,7 +31,7 @@ public class movement : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector2 touchPos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 relativePos = touchPos- Rb.position;
+            relativePos = touchPos- Rb.position;
             movementDirection = relativePos.normalized;
 
         }
@@ -43,11 +48,20 @@ public class movement : MonoBehaviour
         {
             LookingLeft = true;
         }
+
+        
     }
 
 	void FixedUpdate()
 	{
-        Rb.MovePosition(Rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
-        SR.flipX = LookingLeft;
+        speed = movementDirection.magnitude * moveSpeed;
+        animator.SetFloat("Speed", speed);
+        
+        if (relativePos.magnitude > 0.2)
+        {
+            Rb.MovePosition(Rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
+            SR.flipX = LookingLeft;
+        }
+        
 	}
 }
