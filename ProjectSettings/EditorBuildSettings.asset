@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Archery/Archery.unity
     guid: 576d2154b3ab41f4a99ac97f06359297
   - enabled: 1
-    path: Assets/Scenes/RoadWithBoxes/roadWithBoxes.unity
+    path: Assets/Scenes/RoadWithCars/roadWithCars.unity
     guid: 71b4e95d6f3b17d45aec7ea9788ab87f
   - enabled: 1
     path: Assets/Scenes/MainManu/MainMenu.unity

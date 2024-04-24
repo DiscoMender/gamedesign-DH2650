@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SpawnBoxes : MonoBehaviour
+public class Spawncars: MonoBehaviour
 {
     public GameObject objectToSpawn; // El objeto que quieres instanciar
     public float spawnInterval = 1f; // Intervalo entre cada aparición en segundos
