@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Escaping/Escaping.unity
     guid: 66591c3947d74f24c81e16bd1246acf2
   - enabled: 1
-    path: Assets/Scenes/MainManu/MainMenu.unity
-    guid: b6769c6b2ae97ee49b6da5c8fb1d7db0
+    path: Assets/Scenes/Bullets/Bullets.unity
+    guid: cd52d813b879a8745886f6b893cd1f3b
+  - enabled: 1
+    path: Assets/Scenes/Archery/Archery.unity
+    guid: 576d2154b3ab41f4a99ac97f06359297
+  - enabled: 1
+    path: Assets/Scenes/RoadWithBoxes/roadWithBoxes.unity
+    guid: 71b4e95d6f3b17d45aec7ea9788ab87f
   m_configObjects: {}

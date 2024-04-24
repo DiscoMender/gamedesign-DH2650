@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float moveSpeed = 6f;
 
     public Rigidbody2D Rb;
     public SpriteRenderer SR;
@@ -47,9 +47,7 @@ public class movement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-        Rb.MovePosition(Rb.position + movementDirection* moveSpeed * Time.fixedDeltaTime);
-        //Light.position = Rb.position;
-        //Cam.position = Rb.position;
+        Rb.MovePosition(Rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
         SR.flipX = LookingLeft;
 	}
 }
