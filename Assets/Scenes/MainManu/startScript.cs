@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class startScript : MonoBehaviour
 {
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,7 @@ public class startScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            PlayerStats.startPlaying();
+            SceneManager.LoadScene("InbetweenScene");
         }
     }
 }
