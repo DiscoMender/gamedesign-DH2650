@@ -84,4 +84,10 @@ public class PlayerStats : MonoBehaviour
         AddScore();
         RemoveScene(sceneName);
     }
+
+    public static void startPlaying()
+    {
+        RemoveScene("MainMenu");
+
+    }
 }
