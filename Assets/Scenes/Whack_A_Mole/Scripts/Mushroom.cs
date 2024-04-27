@@ -5,24 +5,39 @@ using UnityEngine;
 public class Mushroom : MonoBehaviour
 {
     // offset of the sprite to hide
-    public Vector2 startPosition = new Vector2(-1.57f, -2.5f);
-    public Vector2 endPosition = new Vector2(0.95f, -2.5f);
+    public Vector2 startPosition = new Vector2(0f, 0f);
+    public Vector2 endPosition = new Vector2(0f, 1.71f);
 
     // How long it takes to show a mole
     public float showDuration = 0.5f;
     public float duration = 1f;
 
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private BoxCollider2D boxCollider2D;
+    private Vector2 boxOffset;
+    private Vector2 boxSize;
+    private Vector2 boxOffsetHidden;
+    private Vector2 boxSizeHidden;
 
     // Mole parameters 
     private bool hittable = true;
     private int lives;
 
 
-    //private void Awake()
-    //{
-    //    spriteRenderer = GetComponent<SpriteRenderer>();
-    //}
+    private void Awake()
+    {
+        // get references
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+
+        // collider values
+        boxOffset = boxCollider2D.offset;
+        boxSize = boxCollider2D.size;
+        boxOffsetHidden = new Vector2(boxOffset.x, -startPosition.y / 2f + 0.22f); // -startPosition.y / 2f);
+        boxSizeHidden = new Vector2(boxSize.x, 0f);
+    }
 
     private IEnumerator ShowHide(Vector2 start, Vector2 end)
     {
@@ -34,7 +49,8 @@ public class Mushroom : MonoBehaviour
         while (elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(start, end, elapsed / showDuration);
-
+            boxCollider2D.offset = Vector2.Lerp(boxOffsetHidden, boxOffset, elapsed / showDuration);
+            boxCollider2D.size = Vector2.Lerp(boxSizeHidden, boxSize, elapsed / showDuration);
             //update at max framerate
             elapsed += Time.deltaTime;
             yield return null;
@@ -42,6 +58,8 @@ public class Mushroom : MonoBehaviour
 
         // Make sure we're exactly at the end
         transform.localPosition = end;
+        boxCollider2D.offset = boxOffset;
+        boxCollider2D.size = boxSize;
 
         // Wait for duration to pass.
         yield return new WaitForSeconds(duration);
@@ -51,6 +69,9 @@ public class Mushroom : MonoBehaviour
         while (elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(end, start, elapsed / showDuration);
+            boxCollider2D.offset = Vector2.Lerp(boxOffset, boxOffsetHidden, elapsed / showDuration);
+            boxCollider2D.size = Vector2.Lerp(boxSize, boxSizeHidden, elapsed / showDuration);
+
             //update at max framerate
             elapsed += Time.deltaTime;
             yield return null;
@@ -58,6 +79,8 @@ public class Mushroom : MonoBehaviour
 
         // Make sure we're exactly back at the start position
         transform.localPosition = start;
+        boxCollider2D.offset = boxOffsetHidden;
+        boxCollider2D.size = boxSizeHidden;
     }
 
     private void Start()
@@ -69,7 +92,8 @@ public class Mushroom : MonoBehaviour
     private IEnumerator QuickHide()
     {
         yield return new WaitForSeconds(0.25f);
-        if (hittable)
+        Debug.Log("QuickHide");
+        if (!hittable)
         {
             Hide();
         }
@@ -79,6 +103,9 @@ public class Mushroom : MonoBehaviour
     {
         // Set the appropriate mole parameters to hide it
         transform.localPosition = startPosition;
+        Debug.Log("Hide");
+        boxCollider2D.offset = boxOffsetHidden;
+        boxCollider2D.size = boxSizeHidden;
     }
 
     private void CreateNext()
@@ -118,6 +145,7 @@ public class Mushroom : MonoBehaviour
                 if (collider != null && collider.OverlapPoint(touchPosition))
                 {
                     Debug.Log("Touched!");
+                    animator.SetTrigger("Death");
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     hittable = false;
