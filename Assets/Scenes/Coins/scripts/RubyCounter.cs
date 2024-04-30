@@ -8,7 +8,7 @@ public class RubyCounter : MonoBehaviour
     public static RubyCounter instance;
 
     [SerializeField] private TMP_Text rubyText;
-    [SerializeField] private int currentRubies = 0;
+    public int currentRubies = 0;
 
     void Awake()
     {

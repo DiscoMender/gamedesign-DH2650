@@ -8,7 +8,7 @@ public class CoinCounter : MonoBehaviour
     public static CoinCounter instance;
 
     [SerializeField] private TMP_Text coinText;
-    [SerializeField] private int currentCoins = 0;
+    public int currentCoins = 0;
 
     void Awake()
     {
