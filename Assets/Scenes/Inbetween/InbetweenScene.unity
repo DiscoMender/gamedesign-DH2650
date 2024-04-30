@@ -263,7 +263,6 @@ MonoBehaviour:
   - Bullets
   - RoadWithBoxes
   - Archery
-  - Coins
   sceneIndex: 0
   canvas: {fileID: 97106656}
   button: {fileID: 0}
