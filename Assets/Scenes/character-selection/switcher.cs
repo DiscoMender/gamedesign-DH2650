@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ClickDetector : MonoBehaviour
@@ -8,33 +7,32 @@ public class ClickDetector : MonoBehaviour
     private float clickTimeThreshold = 0.2f;
     private float clickTimer = 0f;
 
-    void Update()
+    void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            startPosition = Input.mousePosition; 
-            clickTimer = 0f; 
-            isDragging = false; 
-        }
-        else if (Input.GetMouseButton(0)) 
-        {
-            clickTimer += Time.deltaTime;
+        startPosition = Input.mousePosition;
+        clickTimer = 0f;
+        isDragging = false;
+    }
 
-            if (!isDragging && Vector3.Distance(startPosition, Input.mousePosition) > 10f)
-            {
-                isDragging = true; // Se considera como arrastre si hay movimiento significativo
-            }
-        }
-        else if (Input.GetMouseButtonUp(0)) // Se levanta el botón del mouse
+    void OnMouseDrag()
+    {
+        clickTimer += Time.deltaTime;
+
+        if (!isDragging && Vector3.Distance(startPosition, Input.mousePosition) > 10f)
         {
-            if (!isDragging && clickTimer <= clickTimeThreshold) // Si no hubo arrastre y el tiempo es menor al umbral
-            {
-                Debug.Log("Click!"); // Es un clic
-            }
-            else
-            {
-                Debug.Log("Drag or hold for " + clickTimer.ToString("F2") + " seconds"); // Es un arrastre o una pulsación prolongada
-            }
+            isDragging = true;
+        }
+    }
+
+    void OnMouseUp()
+    {
+        if (!isDragging && clickTimer <= clickTimeThreshold)
+        {
+            Debug.Log("Click en: " + gameObject.name);
+        }
+        else
+        {
+            Debug.Log("Drag o mantén presionado durante " + clickTimer.ToString("F2") + " segundos");
         }
     }
 }
