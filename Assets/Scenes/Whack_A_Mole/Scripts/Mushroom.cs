@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
+    [Header("GameManager")]
+    [SerializeField] private GameManager gameManager;
+
+
     // offset of the sprite to hide
     public Vector2 startPosition = new Vector2(0f, 0f);
     public Vector2 endPosition = new Vector2(0f, 1.71f);
@@ -23,6 +27,15 @@ public class Mushroom : MonoBehaviour
     // Mole parameters 
     private bool hittable = true;
     private int lives;
+
+    
+
+    private int moleIndex = 0; // to interat with game manager
+
+    public void SetIndex(int index)
+    {
+        moleIndex = index;
+    }
 
 
     private void Awake()
@@ -81,12 +94,38 @@ public class Mushroom : MonoBehaviour
         transform.localPosition = start;
         boxCollider2D.offset = boxOffsetHidden;
         boxCollider2D.size = boxSizeHidden;
+
+        // If we got to the end and it's still hittable then we missed it
+        if (hittable)
+        {
+            hittable = false;
+            // we only give time penalty if it isn't a mole
+            gameManager.Missed(moleIndex);
+
+        }
+
     }
 
     private void Start()
     {
         CreateNext();
         StartCoroutine(ShowHide(startPosition, endPosition));
+    }
+
+    public void Activate(int level)
+    {
+        SetLevel(level);
+        CreateNext();
+        StartCoroutine(ShowHide(startPosition, endPosition));
+    }
+
+    public void SetLevel(int level)
+    {
+
+        // set duration speed according to level
+        float durationMin = Mathf.Clamp(1 - level * 0.1f, 0.01f, 1f);
+        float durationMax = Mathf.Clamp(2 - level * 0.1f, 0.01f, 2f);
+        duration = Random.Range(durationMin, durationMax);
     }
 
     private IEnumerator QuickHide()
@@ -99,7 +138,7 @@ public class Mushroom : MonoBehaviour
         }
     }
 
-    private void Hide()
+    public void Hide()
     {
         // Set the appropriate mole parameters to hide it
         transform.localPosition = startPosition;
@@ -146,6 +185,7 @@ public class Mushroom : MonoBehaviour
                 {
                     Debug.Log("Touched!");
                     animator.SetTrigger("Death");
+                    gameManager.AddScore(moleIndex);
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     hittable = false;
