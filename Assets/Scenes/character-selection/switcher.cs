@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClickDetector : MonoBehaviour
 {
@@ -28,11 +29,9 @@ public class ClickDetector : MonoBehaviour
     {
         if (!isDragging && clickTimer <= clickTimeThreshold)
         {
-            Debug.Log("Click en: " + gameObject.name);
-        }
-        else
-        {
-            Debug.Log("Drag o mantén presionado durante " + clickTimer.ToString("F2") + " segundos");
+            //Debug.Log("Click en: " + gameObject.name);
+            bundle_selector.bundle = gameObject.name;
+            SceneManager.LoadScene("InbetweenScene");
         }
     }
 }
