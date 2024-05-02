@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainManu/MainMenu.unity
     guid: b6769c6b2ae97ee49b6da5c8fb1d7db0
+  - enabled: 1
+    path: Assets/Scenes/Coins/Coins.unity
+    guid: 29eb8e1befd94e849b187577bf9842fb
   m_configObjects: {}
