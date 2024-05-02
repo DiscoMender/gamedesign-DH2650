@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,20 @@ using UnityEngine.UI;
 public class SceneSwitcher : MonoBehaviour
 {
 
+    [Serializable]
+    public class customDictionary
+    {
+        public string GroupName;
+        public string [] sceneNames;
+    }
+
+    [SerializeField]
+    private customDictionary[] scenesGroups;
+
     [SerializeField]
     private string[] sceneNames;
+
+    
 
     [SerializeField]
     private int sceneIndex = 0;
@@ -66,7 +79,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void LoadRandomScene()
     {
-        int randomIndex = Random.Range(0, sceneNames.Length); // Generates a random index
+        int randomIndex = UnityEngine.Random.Range(0, sceneNames.Length); // Generates a random index
         Debug.Log("Attempting to start " + sceneNames[randomIndex]);
         //StartCoroutine(LoadNewScene("Escaping"));
         StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
