@@ -18,7 +18,7 @@ public class startScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("InbetweenScene");
+            SceneManager.LoadScene("character-selection");
         }
     }
 }
