@@ -271,7 +271,6 @@ MonoBehaviour:
     - Mini-Golf
     - FindTheKey
     - Bullets
-    - Archery
     - Coins
   - GroupName: blue
     sceneNames:
