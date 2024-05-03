@@ -256,6 +256,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015b17e332fb0a1488ebf608e24be2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenesGroups:
+  - GroupName: random
+    sceneNames:
+    - Mini-Golf
+    - FindTheKey
+    - Escaping
+    - Bullets
+    - RoadWithCars
+    - Archery
+    - Coins
+  - GroupName: green
+    sceneNames:
+    - Mini-Golf
+    - FindTheKey
+    - Bullets
+    - Archery
+    - Coins
+  - GroupName: blue
+    sceneNames:
+    - Escaping
+    - RoadWithCars
+    - Archery
+  - GroupName: blue
+    sceneNames:
+    - Escaping
+    - RoadWithCars
   sceneNames:
   - Mini-golf
   - FindTheKey
@@ -264,6 +290,7 @@ MonoBehaviour:
   - RoadWithCars
   - Archery
   - Whack-A-Mole
+  - Coins
   sceneIndex: 3
   canvas: {fileID: 97106656}
   button: {fileID: 0}
