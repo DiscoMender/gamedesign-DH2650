@@ -278,20 +278,6 @@ MonoBehaviour:
     - Escaping
     - RoadWithCars
     - Archery
-  - GroupName: blue
-    sceneNames:
-    - Escaping
-    - RoadWithCars
-  sceneNames:
-  - Mini-golf
-  - FindTheKey
-  - Escaping
-  - Bullets
-  - RoadWithCars
-  - Archery
-  - Whack-A-Mole
-  - Coins
-  sceneIndex: 3
   canvas: {fileID: 97106656}
   button: {fileID: 0}
 --- !u!4 &745163493
