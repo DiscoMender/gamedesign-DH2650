@@ -29,7 +29,7 @@ public class ClickDetector : MonoBehaviour
     {
         if (!isDragging && clickTimer <= clickTimeThreshold)
         {
-            //Debug.Log("Click en: " + gameObject.name);
+            Debug.Log("Click en: " + gameObject.name);
             bundle_selector.bundle = gameObject.name;
             SceneManager.LoadScene("InbetweenScene");
         }
