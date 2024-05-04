@@ -7,7 +7,7 @@ public class AzureusIntro : MonoBehaviour
     private Animator animator;
     public float speed = 5f;
     public Vector3 startPosition = new Vector3(-12f, -0.52f, 0);
-
+    public bool azureusReached = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +27,14 @@ public class AzureusIntro : MonoBehaviour
         
         transform.position += Vector3.right * speed * Time.deltaTime;
 
-        Debug.Log(transform.position.x);
+        // Debug.Log(transform.position.x);
 
         // stay idle
         if (transform.position.x >= -3f)
         {
             // play idle animation
             animator.SetTrigger("Idle");
-
+            azureusReached = true; // Set the flag to true when target is reached
             enabled = false;
         }
     }
