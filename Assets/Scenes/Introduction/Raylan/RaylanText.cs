@@ -5,19 +5,19 @@ using UnityEngine.UI;
 // using TMPro;
 
 
-public class AzureusText : MonoBehaviour
+public class RaylanText : MonoBehaviour
 {
     // Adjust typing speed
     public float typingSpeed = 0.05f;
     // The full text to be displayed
-    public string fullText;
+    public string fullText; // = "Hello! I'm Azureus, a time traveler born in 2077 and raised on Mars. Fascinated by Earth's past, I journey through history, learning skills like archery, driving, parkour, and shooting from people across the ages. My adventures are driven by a passion for knowledge and a desire to experience humanity's rich history firsthand.";
     // Text component to display text
     //private TMP_Text uiText;
     private Text uiText;
     // Current displayed text
     private string currentText = "";
 
-    public AzureusIntro azureusIntro;
+    public RaylanIntro raylanIntro;
 
     public GameObject panel; // Reference to the panel GameObject
 
@@ -38,7 +38,7 @@ public class AzureusText : MonoBehaviour
 
 
         // Start the typing coroutine
-        StartCoroutine(WaitForAzureus());
+        StartCoroutine(WaitForRaylan());
     }
 
     //// Update is called once per frame
@@ -46,9 +46,9 @@ public class AzureusText : MonoBehaviour
     //{
 
     //}
-    IEnumerator WaitForAzureus()
+    IEnumerator WaitForRaylan()
     {
-        yield return new WaitUntil(() => azureusIntro.azureusReached);
+        yield return new WaitUntil(() => raylanIntro.raylanReached);
 
         // Show the panel once the character reaches the target
         panel.SetActive(true);
@@ -66,5 +66,8 @@ public class AzureusText : MonoBehaviour
             // Wait for the specified typing speed before showing the next character
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        yield return new WaitForSeconds(1f);
+        raylanIntro.finishConversation = true;
     }
 }
