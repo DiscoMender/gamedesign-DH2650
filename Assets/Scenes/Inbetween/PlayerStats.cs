@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (streak >= 3)
+        if (streak > 3)
         {
             StreakDisplay.text = "YOU'RE ON STREAK. WILL RECEIVE X10 SCORE";
         }
@@ -59,7 +59,7 @@ public class PlayerStats : MonoBehaviour
     private static void AddScore()
     {
         streak++;
-        if (streak >= 3)
+        if (streak > 3)
         {
             score += 10;
         }
@@ -84,7 +84,6 @@ public class PlayerStats : MonoBehaviour
     public static void LoseMinigame(string sceneName)
     {
         lives--;
-        
         streak = 0;
         RemoveScene(sceneName);
     }
