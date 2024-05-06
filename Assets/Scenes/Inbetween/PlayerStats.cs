@@ -95,10 +95,7 @@ public class PlayerStats : MonoBehaviour
     */
     public static void WinMinigame(string sceneName)
     {
-        if (lives == 0) {  // TODO: Fix this awful hack
-            score = 0;
-            lives = maxLives;
-        }
+        
         AddScore();
         RemoveScene(sceneName);
     }
