@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainManu/MainMenu.unity
     guid: b6769c6b2ae97ee49b6da5c8fb1d7db0
+  - enabled: 1
+    path: Assets/Scenes/Coins/Coins.unity
+    guid: 29eb8e1befd94e849b187577bf9842fb
+  - enabled: 1
+    path: Assets/Scenes/character-selection/character-selection.unity
+    guid: 3f10b1290c1c6a141a54402f87a6fc2c
   m_configObjects: {}

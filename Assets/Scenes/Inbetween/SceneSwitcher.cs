@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,23 @@ using UnityEngine.UI;
 public class SceneSwitcher : MonoBehaviour
 {
 
-    [SerializeField]
-    private string[] sceneNames;
+    [Serializable]
+    public class CustomDictionary
+    {
+        public string GroupName;
+        public string [] sceneNames;
+    }
 
     [SerializeField]
-    private int sceneIndex = 0;
+    private CustomDictionary[] scenesGroups;
+
     [SerializeField]
     private Canvas canvas;
 
     [SerializeField]
     private Button button;
 
+    private int sceneIndex = 0;
 
     private bool newSceneIsLoaded = false;
 
@@ -33,7 +40,8 @@ public class SceneSwitcher : MonoBehaviour
         if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
         {
 
-            LoadSequentialScene();
+            //LoadSequentialScene();
+            LoadScene(false);
             newSceneIsLoaded = true;
         }
     }
@@ -64,16 +72,20 @@ public class SceneSwitcher : MonoBehaviour
         newSceneIsLoaded = false; // Resets the newSceneIsLoaded variable
     }
 
-    public void LoadRandomScene()
+    public void LoadScene(bool debug = false)
     {
-        int randomIndex = Random.Range(0, sceneNames.Length); // Generates a random index
-        Debug.Log("Attempting to start " + sceneNames[randomIndex]);
-        //StartCoroutine(LoadNewScene("Escaping"));
-        StartCoroutine(LoadNewScene(sceneNames[randomIndex])); // Loads the scene at the random index
-    }
-
-    public void LoadSequentialScene() {
-        StartCoroutine(LoadNewScene(sceneNames[sceneIndex])); // Loads the scene at the current index
-        sceneIndex = (sceneIndex + 1) % sceneNames.Length; // Increments the index and wraps around if necessary
+        CustomDictionary group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
+        if (!debug)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
+            Debug.Log("Attempting to start " + group.sceneNames[randomIndex]);
+            StartCoroutine(LoadNewScene(group.sceneNames[randomIndex]));
+        }
+        else
+        {
+            StartCoroutine(LoadNewScene(group.sceneNames[sceneIndex])); // Loads the scene at the current index
+            sceneIndex = (sceneIndex + 1) % group.sceneNames.Length; // Increments the index and wraps around if necessary
+        }
+        
     }
 }
