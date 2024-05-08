@@ -27,9 +27,6 @@ public class Mushroom : MonoBehaviour
     // Mole parameters 
     private bool hittable = true;
     private int lives;
-
-    
-
     private int moleIndex = 0; // to interat with game manager
 
     public void SetIndex(int index)
@@ -106,11 +103,11 @@ public class Mushroom : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        CreateNext();
-        StartCoroutine(ShowHide(startPosition, endPosition));
-    }
+    //private void Start()
+    //{
+    //    CreateNext();
+    //    StartCoroutine(ShowHide(startPosition, endPosition));
+    //}
 
     public void Activate(int level)
     {
@@ -151,26 +148,27 @@ public class Mushroom : MonoBehaviour
     {
         //float random = random.Range(0f,1f);
         // No monster need to be hit twice by now
+        animator.SetTrigger("Respawn");
         lives = 1;
         hittable = true;
     }
 
-    //private void OnMouseDwon()
-    //{
-    //    if(hittable)
-    //    {
-    //        StopAllCoroutines();
-    //        StartCoroutine(QuickHide());
-    //        hittable = false; 
-    //    }
-    //}
+    private void OnMouseDwon()
+    {
+        if (hittable)
+        {
+            StopAllCoroutines();
+            StartCoroutine(QuickHide());
+            hittable = false;
+        }
+    }
 
     void Update()
     {
         if (Input.touchCount > 0) // Once screen is touched
         {
             // Get the first touch
-            Touch touch = Input.GetTouch(0); 
+            Touch touch = Input.GetTouch(0);
 
             // Convert the touch position from screen to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);

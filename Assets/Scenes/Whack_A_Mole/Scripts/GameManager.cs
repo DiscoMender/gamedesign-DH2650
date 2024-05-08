@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private HashSet<Mushroom> currentMoles = new HashSet<Mushroom>();
     private bool playing = false;
 
-    public void StartGame()
+    public void Start()
     {
         // Hide all the visible moles
         for (int i = 0; i < moles.Count; i++)
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
         // Remove any old game state
         currentMoles.Clear();
-        
+        playing = true;
 
     }
 
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
                 {
                     currentMoles.Add(moles[index]);
                     moles[index].Activate(2);
+                    Debug.Log("Activate!");
                 }
             }
         }
