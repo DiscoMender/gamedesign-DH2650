@@ -31636,7 +31636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   animator: {fileID: 1587749946}
-  timer: {fileID: 2760107475212261671, guid: d943f21a53d801448939885cc8c1c642, type: 3}
+  timer: {fileID: 2118998771}
 --- !u!95 &1587749946
 Animator:
   serializedVersion: 5
@@ -107462,6 +107462,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &2118998771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2760107475212261671, guid: d943f21a53d801448939885cc8c1c642,
+    type: 3}
+  m_PrefabInstance: {fileID: 482956562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b7a535f48e6a844bc10e92ffe000ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5427757336962994353
 PrefabInstance:
   m_ObjectHideFlags: 0
