@@ -9,4 +9,9 @@ public class click_button_main : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void click()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

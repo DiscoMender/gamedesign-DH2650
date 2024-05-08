@@ -16,40 +16,35 @@ public class movement : MonoBehaviour
 
     private Vector2 relativePos;
 
-    //public Transform Light;
-
-    //public Transform Cam;
-  
     Vector2 move;
 
     private Vector2 movementDirection;
 
-	// Update is called once per frame
 	void Update()
     {
-
-        if (Input.GetMouseButton(0))
+        if (!controller.isPause)
         {
-            Vector2 touchPos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            relativePos = touchPos- Rb.position;
-            movementDirection = relativePos.normalized;
+            if (Input.GetMouseButton(0))
+            {
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                relativePos = touchPos - Rb.position;
+                movementDirection = relativePos.normalized;
 
-        }
-        else
-        {
-            movementDirection = Vector2.zero;
-        }
+            }
+            else
+            {
+                movementDirection = Vector2.zero;
+            }
 
-        if (movementDirection.x>0)
-        {
-            LookingLeft = false;
+            if (movementDirection.x > 0)
+            {
+                LookingLeft = false;
+            }
+            else if (movementDirection.x < 0)
+            {
+                LookingLeft = true;
+            }
         }
-        else if (movementDirection.x<0)
-        {
-            LookingLeft = true;
-        }
-
-        
     }
 
 	void FixedUpdate()

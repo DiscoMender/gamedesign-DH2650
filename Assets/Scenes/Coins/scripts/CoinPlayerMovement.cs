@@ -31,7 +31,7 @@ public class CoinPlayerMovement : MonoBehaviour
             PlayerStats.WinMinigame("Coins");
         }
 
-        if (Input.GetMouseButton(0))
+        if (!controller.isPause && Input.GetMouseButton(0))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
