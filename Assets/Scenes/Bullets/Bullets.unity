@@ -241,8 +241,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2760107475212261671, guid: d943f21a53d801448939885cc8c1c642,
         type: 3}
-      propertyPath: isTimeRunning
+      propertyPath: isCountDown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760107475212261671, guid: d943f21a53d801448939885cc8c1c642,
+        type: 3}
+      propertyPath: isTimeRunning
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2760107475212261671, guid: d943f21a53d801448939885cc8c1c642,
         type: 3}
