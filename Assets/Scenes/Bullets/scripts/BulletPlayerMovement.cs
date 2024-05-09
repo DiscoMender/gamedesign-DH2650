@@ -21,7 +21,7 @@ public class BulletPlayerMovement : MonoBehaviour
             PlayerStats.WinMinigame("Bullets");
         }
 
-        if (Input.GetMouseButton(0))
+        if (!controller.isPause && Input.GetMouseButton(0))
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goal
   - Hazard
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -26,10 +27,10 @@ TagManager:
   - 
   - 
   - 
+  - Enemies
+  - Environment
+  - SpikeWall
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
   - BackGround
   - 
   - 
@@ -45,6 +46,12 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: player
+    uniqueID: 1675928501
+    locked: 0
+  - name: menu
+    uniqueID: 2619877419
     locked: 0
   - name: Layer 2
     uniqueID: 4250941897

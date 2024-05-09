@@ -68,7 +68,7 @@ public class ShootArrow : MonoBehaviour
             SetArrowColor(Color.red);
         }
 
-        if (Input.GetMouseButton(0))
+        if (!controller.isPause && Input.GetMouseButton(0))
         {
             Clicked();
         }
@@ -81,7 +81,6 @@ public class ShootArrow : MonoBehaviour
 
     private void Clicked() {
         if (shootCooldownTimer <= 0) {
-            // Shoot();
             shootCooldownTimer = shootCooldown;
             Shoot();
         }

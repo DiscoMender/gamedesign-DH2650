@@ -19,7 +19,10 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        PlayerInput();
+        if (!controller.isPause)
+        {
+            PlayerInput();
+        }
         if (timer.remainingSeconds <= 0f)
         {
             PlayerStats.LoseMinigame("Mini-golf");

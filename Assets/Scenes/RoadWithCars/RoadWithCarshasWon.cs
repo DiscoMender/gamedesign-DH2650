@@ -7,7 +7,7 @@ public class RoadWithCarsHasWon : MonoBehaviour
     [SerializeField] private Timer timer;
     void Update()
     {
-        if (timer.remainingSeconds == 0f)
+        if (timer.remainingSeconds <= 0f)
         {
             PlayerStats.WinMinigame("RoadWithCars");
         }
