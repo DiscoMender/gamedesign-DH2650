@@ -6,17 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class startScript : MonoBehaviour
 {
-
-    [SerializeField]
-    private TextMeshProUGUI ScoreDisplay;
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        ScoreDisplay.text = "Last score: " + PlayerStats.score;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("character-selection");
-        }
+        SceneManager.LoadScene("character-selection");
     }
 }
