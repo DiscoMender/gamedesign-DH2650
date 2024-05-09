@@ -9,6 +9,8 @@ public class findTheKeyMovement : MonoBehaviour
     public Rigidbody2D Rb;
     public SpriteRenderer SR;
 
+    public Camera cam;
+
     public bool LookingLeft = false;
 
     private float speed;
@@ -56,6 +58,7 @@ public class findTheKeyMovement : MonoBehaviour
         {
             Rb.MovePosition(Rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
             SR.flipX = LookingLeft;
+            cam.transform.position = new Vector3(Rb.position.x, Rb.position.y, -10f);
         }
 
     }
