@@ -9,6 +9,8 @@ public class findTheKeyMovement : MonoBehaviour
     public Rigidbody2D Rb;
     public SpriteRenderer SR;
 
+    public Camera cam;
+
     public bool LookingLeft = false;
 
     private float speed;
@@ -21,29 +23,29 @@ public class findTheKeyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButton(0))
+        if (!controller.isPause)
         {
-            Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            relativePos = touchPos - Rb.position;
-            movementDirection = relativePos.normalized;
+            if (Input.GetMouseButton(0))
+            {
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                relativePos = touchPos - Rb.position;
+                movementDirection = relativePos.normalized;
 
-        }
-        else
-        {
-            movementDirection = Vector2.zero;
-        }
+            }
+            else
+            {
+                movementDirection = Vector2.zero;
+            }
 
-        if (movementDirection.x > 0)
-        {
-            LookingLeft = false;
+            if (movementDirection.x > 0)
+            {
+                LookingLeft = false;
+            }
+            else if (movementDirection.x < 0)
+            {
+                LookingLeft = true;
+            }
         }
-        else if (movementDirection.x < 0)
-        {
-            LookingLeft = true;
-        }
-
-
     }
 
     void FixedUpdate()
@@ -56,6 +58,7 @@ public class findTheKeyMovement : MonoBehaviour
         {
             Rb.MovePosition(Rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
             SR.flipX = LookingLeft;
+            cam.transform.position = new Vector3(Rb.position.x, Rb.position.y, -10f);
         }
 
     }

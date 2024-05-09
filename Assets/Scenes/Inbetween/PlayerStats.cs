@@ -11,12 +11,18 @@ public class PlayerStats : MonoBehaviour
 
     public static int score = 0;
     public static int lives = 3;
-    private static int maxLives = 3;
+    public static int maxLives = 3;
+
+    private static int streak = 0;
 
     [SerializeField]
     private TextMeshProUGUI ScoreDisplay;
     [SerializeField]
     private TextMeshProUGUI LivesDisplay;
+
+    [SerializeField]
+    private TextMeshProUGUI StreakDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +32,14 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (streak > 3)
+        {
+            StreakDisplay.text = "YOU'RE ON STREAK. WILL RECEIVE X10 SCORE";
+        }
+        else
+        {
+            StreakDisplay.text = "";
+        }
         UpdateUI();
     }
 
@@ -44,7 +58,15 @@ public class PlayerStats : MonoBehaviour
 
     private static void AddScore()
     {
-        score++;
+        streak++;
+        if (streak > 3)
+        {
+            score += 10;
+        }
+        else
+        {
+            score++;
+        }
     }
 
     private static void RemoveScene(string sceneName)
@@ -62,11 +84,7 @@ public class PlayerStats : MonoBehaviour
     public static void LoseMinigame(string sceneName)
     {
         lives--;
-        if (lives < 0) // TODO: Fix this awful hack
-        {
-            score = 0;
-            lives = maxLives - 1;
-        }
+        streak = 0;
         RemoveScene(sceneName);
     }
 
@@ -77,17 +95,8 @@ public class PlayerStats : MonoBehaviour
     */
     public static void WinMinigame(string sceneName)
     {
-        if (lives == 0) {  // TODO: Fix this awful hack
-            score = 0;
-            lives = maxLives;
-        }
+        
         AddScore();
         RemoveScene(sceneName);
-    }
-
-    public static void startPlaying()
-    {
-        RemoveScene("MainMenu");
-
     }
 }
