@@ -9,4 +9,12 @@ public class boxDelete : MonoBehaviour
         // Si el objeto se sale de la vista de la cámara, lo destruye
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.name == "player")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
