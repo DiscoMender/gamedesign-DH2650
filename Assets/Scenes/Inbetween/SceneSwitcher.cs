@@ -39,10 +39,17 @@ public class SceneSwitcher : MonoBehaviour
         // if no scene is loaded and the screen is clicked, load a random scene
         if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
         {
-
-            //LoadSequentialScene();
-            LoadScene(false);
-            newSceneIsLoaded = true;
+            if (PlayerStats.lives <= 0)
+            {
+                StartCoroutine(LoadNewScene("mainMenu"));
+            }
+            else
+            {
+                //LoadSequentialScene();
+                LoadScene(false);
+                newSceneIsLoaded = true;
+            }
+            
         }
     }
 

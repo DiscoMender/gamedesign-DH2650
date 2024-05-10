@@ -111,7 +111,7 @@ public class Bandit : MonoBehaviour
 
         transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 
-        if (Input.touchCount > 0 && !dead)
+        if (!controller.isPause && Input.touchCount > 0 && !dead)
         {
             Touch firstTouch = Input.GetTouch(0);
             if (firstTouch.position.x < Screen.width / 2 && m_grounded)
