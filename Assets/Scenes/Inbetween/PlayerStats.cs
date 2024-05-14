@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (streak > 3)
         {
-            StreakDisplay.text = "YOU'RE ON STREAK. WILL RECEIVE X10 SCORE";
+            StreakDisplay.text = "YOU'RE ON STREAK!";
         }
         else
         {
@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
         streak++;
         if (streak > 3)
         {
-            score += 10;
+            score += 2;
         }
         else
         {
@@ -95,7 +95,6 @@ public class PlayerStats : MonoBehaviour
     */
     public static void WinMinigame(string sceneName)
     {
-        
         AddScore();
         RemoveScene(sceneName);
     }
