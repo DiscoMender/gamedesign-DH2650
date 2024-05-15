@@ -238,8 +238,9 @@ GameObject:
   m_Component:
   - component: {fileID: 624902299}
   - component: {fileID: 624902300}
+  - component: {fileID: 624902301}
   m_Layer: 0
-  m_Name: music
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,6 +357,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &624902301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624902298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29f91bacebde0649af07a2824103834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 624902300}
+  mainMenuMusic: {fileID: 8300000, guid: d6db7a07183694a459a41cb217fafdb4, type: 3}
+  gameMusic: {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
 --- !u!1 &745163491
 GameObject:
   m_ObjectHideFlags: 0
