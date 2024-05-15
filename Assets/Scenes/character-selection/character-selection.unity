@@ -1668,7 +1668,7 @@ GameObject:
   - component: {fileID: 1070218036}
   - component: {fileID: 1070218037}
   m_Layer: 5
-  m_Name: blue
+  m_Name: Azureus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2407,7 +2407,7 @@ GameObject:
   - component: {fileID: 1455951399}
   - component: {fileID: 1455951398}
   m_Layer: 5
-  m_Name: green
+  m_Name: Raylan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
