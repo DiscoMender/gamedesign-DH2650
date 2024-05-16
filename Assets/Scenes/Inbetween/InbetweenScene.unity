@@ -404,7 +404,6 @@ MonoBehaviour:
   scenesGroups:
   - GroupName: random
     sceneNames:
-    - Mini-Golf
     - FindTheKey
     - Escaping
     - Bullets
@@ -413,7 +412,6 @@ MonoBehaviour:
     - Coins
   - GroupName: Raylan
     sceneNames:
-    - Mini-Golf
     - FindTheKey
     - Bullets
     - Coins
@@ -422,7 +420,6 @@ MonoBehaviour:
     - Escaping
     - RoadWithCars
     - Archery
-    - WhackAMole
   canvas: {fileID: 97106656}
   button: {fileID: 0}
 --- !u!4 &745163493
