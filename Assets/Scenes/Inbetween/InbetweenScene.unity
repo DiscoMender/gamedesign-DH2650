@@ -422,6 +422,7 @@ MonoBehaviour:
     - Escaping
     - RoadWithCars
     - Archery
+    - WhackAMole
   canvas: {fileID: 97106656}
   button: {fileID: 0}
 --- !u!4 &745163493

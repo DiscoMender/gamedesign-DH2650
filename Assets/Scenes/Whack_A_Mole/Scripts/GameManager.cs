@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour
     // reference the moles
     [SerializeField] private List<Mushroom> moles;
 
+    // reference the timer
+    [SerializeField] private Timer timer;
+
     // a hash set of moles
     private HashSet<Mushroom> currentMoles = new HashSet<Mushroom>();
-    private bool playing = false;
 
-    public void StartGame()
+    public void Start()
     {
         // Hide all the visible moles
         for (int i = 0; i < moles.Count; i++)
@@ -22,7 +24,6 @@ public class GameManager : MonoBehaviour
 
         // Remove any old game state
         currentMoles.Clear();
-        
 
     }
 
@@ -30,23 +31,28 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     //void Start()
     //{
-        
+
     //}
 
     // Update is called once per frame
     void Update()
     {
-        if (playing)
+
+        // check timer
+        if (timer.remainingSeconds <= 0f)
         {
-            // check if we need to start any more moles
-            if (currentMoles.Count < 2)
+            PlayerStats.WinMinigame("WhackAMole");
+        }
+
+        // check if we need to start any more moles
+        if (currentMoles.Count < 2)
+        {
+            int index = Random.Range(0, moles.Count);
+            if (!currentMoles.Contains(moles[index]))
             {
-                int index = Random.Range(0, moles.Count);
-                if (!currentMoles.Contains(moles[index]))
-                {
-                    currentMoles.Add(moles[index]);
-                    moles[index].Activate(2);
-                }
+                currentMoles.Add(moles[index]);
+                moles[index].Activate(2);
+                Debug.Log("Activate!");
             }
         }
     }
@@ -61,6 +67,6 @@ public class GameManager : MonoBehaviour
     {
         // if we miss a mole
         currentMoles.Remove(moles[moleIndex]);
-        PlayerStats.LoseMinigame("Whack_A_Mole");
+        PlayerStats.LoseMinigame("WhackAMole");
     }
 }
