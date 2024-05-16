@@ -34,7 +34,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (streak > 3)
         {
-            StreakDisplay.text = "YOU'RE ON STREAK!";
+            StreakDisplay.text = "YOU ARE ON A STREAK!";
         }
         else
         {

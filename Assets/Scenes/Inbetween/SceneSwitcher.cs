@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneSwitcher : MonoBehaviour
 {
@@ -15,8 +16,18 @@ public class SceneSwitcher : MonoBehaviour
         public string [] sceneNames;
     }
 
+    [Serializable]
+    public class CustomDictionaryHelpText
+    {
+        public string Name;
+        public string text;
+    }
+
     [SerializeField]
     private CustomDictionary[] scenesGroups;
+
+    [SerializeField]
+    private CustomDictionaryHelpText[] HelpTexts;
 
     [SerializeField]
     private Canvas canvas;
@@ -27,6 +38,24 @@ public class SceneSwitcher : MonoBehaviour
     private int sceneIndex = 0;
 
     private bool newSceneIsLoaded = false;
+    private bool sceneHelpTextIsBeingShown = false;
+
+    [SerializeField]
+    private GameObject ScoreScreenTextObjects;
+
+    [SerializeField] 
+    private GameObject helpTextObject;
+    [SerializeField]
+    private TextMeshProUGUI helpText;
+
+    private string helpTextDefaultString = "Get ready for the next minigame!";
+    [SerializeField]
+    private float sceneHelpTextTime = 3.0f;
+    private float sceneHelpTextTimer = 0.0f;
+
+    private int nextSceneIndex = 0;
+
+    private CustomDictionary group;
 
     // Start is called before the first frame update
     void Start()
@@ -36,36 +65,54 @@ public class SceneSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if no scene is loaded and the screen is clicked, load a random scene
-        if (!newSceneIsLoaded && Input.GetMouseButtonDown(0))
-        {
-            if (PlayerStats.lives <= 0)
-            {
-                StartCoroutine(LoadNewScene("mainMenu"));
-            }
-            else
-            {
-                //LoadSequentialScene();
-                // #TODO: Insert Character Intro Scene
-                CustomDictionary group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
-                //switch (group.GroupName)
-                //{
-                //    case "blue":
-                //        //LoadNewScene("AzureusIntro");
-                //        break;
-                //    case "green":
-                //        //LoadNewScene("RaylanIntro");
-                //        break;
-                //    default:
-                //        Debug.Log("Not choose a character!");
-                //        break;
-                //}
+        
 
-                // Below will be done after 
-                LoadScene(false);
-                newSceneIsLoaded = true;
+        // if no scene is loaded and the screen is clicked, load the help text for the next scene
+        if (!newSceneIsLoaded && Input.GetMouseButtonDown(0) && !sceneHelpTextIsBeingShown)
+        {
+            sceneHelpTextIsBeingShown = true;
+            sceneHelpTextTimer = sceneHelpTextTime; // Reset the timer for the help text
+
+            // Generate the next scene index
+            group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
+            nextSceneIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
+
+            // TODO: load the help text for the next scene
+            String gameName = group.sceneNames[nextSceneIndex];
+
+            ScoreScreenTextObjects.SetActive(false);
+            helpTextObject.SetActive(true);
+
+            // set the help text
+            String text = Array.Find(HelpTexts, x => x.Name == gameName).text;
+            helpText.text = text;
+
+            return;
+
+        }
+
+        if (sceneHelpTextIsBeingShown) {
+            sceneHelpTextTimer -= Time.deltaTime; 
+            if (sceneHelpTextTimer <= 0.0f || Input.GetMouseButtonDown(0)) {  // If the timer is up, hide the help text and load the scene
+                sceneHelpTextIsBeingShown = false;
+                sceneHelpTextTimer = 0.0f;
+                // TODO: hide the help text for the next scene
+                helpTextObject.SetActive(false);
+                ScoreScreenTextObjects.SetActive(true);
+
+
+                // Load the new scene
+                if (PlayerStats.lives <= 0)
+                {
+                    StartCoroutine(LoadNewScene("mainMenu"));
+                }
+                else
+                {
+                    //LoadSequentialScene();
+                    LoadScene(false);
+                    newSceneIsLoaded = true;
+                }
             }
-            
         }
     }
 
@@ -94,26 +141,20 @@ public class SceneSwitcher : MonoBehaviour
         canvas.gameObject.SetActive(true); // Enables the canvas to show the stats
         newSceneIsLoaded = false; // Resets the newSceneIsLoaded variable
     }
+    
 
     public void LoadScene(bool debug = false)
     {
-        CustomDictionary group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
         if (!debug)
         {
-            int randomIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
-            Debug.Log("Attempting to start " + group.sceneNames[randomIndex]);
-            StartCoroutine(LoadNewScene(group.sceneNames[randomIndex]));
+            Debug.Log("Attempting to start " + group.sceneNames[nextSceneIndex]);
+            StartCoroutine(LoadNewScene(group.sceneNames[nextSceneIndex]));
         }
         else
         {
             StartCoroutine(LoadNewScene(group.sceneNames[sceneIndex])); // Loads the scene at the current index
             sceneIndex = (sceneIndex + 1) % group.sceneNames.Length; // Increments the index and wraps around if necessary
         }
-        
-    }
-
-    public void LoadIntroScene(CustomDictionary group)
-    {
         
     }
 }
