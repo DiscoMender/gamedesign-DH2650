@@ -16,8 +16,18 @@ public class SceneSwitcher : MonoBehaviour
         public string [] sceneNames;
     }
 
+    [Serializable]
+    public class CustomDictionaryHelpText
+    {
+        public string Name;
+        public string text;
+    }
+
     [SerializeField]
     private CustomDictionary[] scenesGroups;
+
+    [SerializeField]
+    private CustomDictionaryHelpText[] HelpTexts;
 
     [SerializeField]
     private Canvas canvas;
@@ -66,12 +76,16 @@ public class SceneSwitcher : MonoBehaviour
             // Generate the next scene index
             group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
             nextSceneIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
-            
-            // TODO: load the help text for the next scene
 
+            // TODO: load the help text for the next scene
+            String gameName = group.sceneNames[nextSceneIndex];
 
             ScoreScreenTextObjects.SetActive(false);
             helpTextObject.SetActive(true);
+
+            // set the help text
+            String text = Array.Find(HelpTexts, x => x.Name == gameName).text;
+            helpText.text = text;
 
             return;
 

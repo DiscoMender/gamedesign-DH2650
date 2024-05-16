@@ -457,6 +457,19 @@ MonoBehaviour:
     - Escaping
     - RoadWithCars
     - Archery
+  HelpTexts:
+  - Name: FindTheKey
+    text: Find the Key!
+  - Name: Escaping
+    text: Run, Jump and Attack!
+  - Name: Bullets
+    text: Run for your life!
+  - Name: RoadWithCars
+    text: Dodge the cars!
+  - Name: Archery
+    text: Shoot the targets!
+  - Name: Coins
+    text: Collect them all!
   canvas: {fileID: 97106656}
   button: {fileID: 0}
   ScoreScreenTextObjects: {fileID: 394725498}
