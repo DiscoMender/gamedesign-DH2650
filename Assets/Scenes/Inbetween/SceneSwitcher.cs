@@ -73,11 +73,13 @@ public class SceneSwitcher : MonoBehaviour
             ScoreScreenTextObjects.SetActive(false);
             helpTextObject.SetActive(true);
 
+            return;
+
         }
 
         if (sceneHelpTextIsBeingShown) {
             sceneHelpTextTimer -= Time.deltaTime; 
-            if (sceneHelpTextTimer <= 0.0f) {  // If the timer is up, hide the help text and load the scene
+            if (sceneHelpTextTimer <= 0.0f || Input.GetMouseButtonDown(0)) {  // If the timer is up, hide the help text and load the scene
                 sceneHelpTextIsBeingShown = false;
                 sceneHelpTextTimer = 0.0f;
                 // TODO: hide the help text for the next scene
