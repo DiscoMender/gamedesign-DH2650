@@ -267,13 +267,13 @@ MonoBehaviour:
     - RoadWithCars
     - Archery
     - Coins
-  - GroupName: green
+  - GroupName: Raylan
     sceneNames:
     - Mini-Golf
     - FindTheKey
     - Bullets
     - Coins
-  - GroupName: blue
+  - GroupName: Azureus
     sceneNames:
     - Escaping
     - RoadWithCars

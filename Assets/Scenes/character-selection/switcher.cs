@@ -33,7 +33,7 @@ public class ClickDetector : MonoBehaviour
             bundle_selector.bundle = gameObject.name;
             PlayerStats.lives = PlayerStats.maxLives;
             PlayerStats.score = 0;
-            SceneManager.LoadScene("InbetweenScene");
+            SceneManager.LoadScene(gameObject.name);
         }
     }
 }

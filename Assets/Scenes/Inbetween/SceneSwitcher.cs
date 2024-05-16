@@ -46,6 +46,22 @@ public class SceneSwitcher : MonoBehaviour
             else
             {
                 //LoadSequentialScene();
+                // #TODO: Insert Character Intro Scene
+                CustomDictionary group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
+                //switch (group.GroupName)
+                //{
+                //    case "blue":
+                //        //LoadNewScene("AzureusIntro");
+                //        break;
+                //    case "green":
+                //        //LoadNewScene("RaylanIntro");
+                //        break;
+                //    default:
+                //        Debug.Log("Not choose a character!");
+                //        break;
+                //}
+
+                // Below will be done after 
                 LoadScene(false);
                 newSceneIsLoaded = true;
             }
@@ -93,6 +109,11 @@ public class SceneSwitcher : MonoBehaviour
             StartCoroutine(LoadNewScene(group.sceneNames[sceneIndex])); // Loads the scene at the current index
             sceneIndex = (sceneIndex + 1) % group.sceneNames.Length; // Increments the index and wraps around if necessary
         }
+        
+    }
+
+    public void LoadIntroScene(CustomDictionary group)
+    {
         
     }
 }
