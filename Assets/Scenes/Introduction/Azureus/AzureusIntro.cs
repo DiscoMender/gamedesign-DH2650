@@ -60,7 +60,16 @@ public class AzureusIntro : MonoBehaviour
             // Move again towards the light bean
             animator.SetTrigger("Walk");
             transform.position += Vector3.right * speed * Time.deltaTime;
-            
+
+            if(transform.position.x >= 11f)
+            {
+                // #TODO: 
+                // Go into the game scene
+                //SceneSwitcher.LoadScene(false);
+                //SceneSwitcher.newSceneIsLoaded = true;
+                //
+            }
+
         }
     }
 }
