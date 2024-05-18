@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// using TMPro;
+using TMPro;
 
 
 public class AzureusText : MonoBehaviour
@@ -13,7 +13,7 @@ public class AzureusText : MonoBehaviour
     public string fullText; // = "Hello! I'm Azureus, a time traveler born in 2077 and raised on Mars. Fascinated by Earth's past, I journey through history, learning skills like archery, driving, parkour, and shooting from people across the ages. My adventures are driven by a passion for knowledge and a desire to experience humanity's rich history firsthand.";
     // Text component to display text
     //private TMP_Text uiText;
-    private Text uiText;
+    public TextMeshPro uiText;
     // Current displayed text
     private string currentText = "";
 
@@ -25,8 +25,6 @@ public class AzureusText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get the Text component
-        uiText = GetComponent<Text> ();
 
         if (uiText == null)
         {
