@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Whack_A_Mole/WhackAMole.unity
     guid: 3a8bf106ce499fd4d8df20cfd9e28b7a
+  - enabled: 1
+    path: Assets/Scenes/Shotting/Shotting.unity
+    guid: 776f22a7642a4c142a972184c3de5620
   m_configObjects: {}
