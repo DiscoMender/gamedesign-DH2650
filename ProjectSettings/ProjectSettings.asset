@@ -161,6 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.DefaultCompany.GameDesignDH2650
     Standalone: com.Company.ProductName
   buildNumber:
     Standalone: 0
@@ -815,7 +816,7 @@ PlayerSettings:
   cloudProjectId: de0b8fec-1754-45e0-bcb0-5235f908db3f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Game-Design-DH2650
+  projectName: Blink and you'll miss it
   organizationId: sebaztian-johansson
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

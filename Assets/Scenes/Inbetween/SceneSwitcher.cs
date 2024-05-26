@@ -77,7 +77,6 @@ public class SceneSwitcher : MonoBehaviour
                 group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
                 nextSceneIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
 
-                // TODO: load the help text for the next scene
                 String gameName = group.sceneNames[nextSceneIndex];
 
                 ScoreScreenTextObjects.SetActive(false);
@@ -98,7 +97,6 @@ public class SceneSwitcher : MonoBehaviour
                 {  // If the timer is up, hide the help text and load the scene
                     sceneHelpTextIsBeingShown = false;
                     sceneHelpTextTimer = 0.0f;
-                    // TODO: hide the help text for the next scene
                     helpTextObject.SetActive(false);
                     ScoreScreenTextObjects.SetActive(true);
 
@@ -112,7 +110,7 @@ public class SceneSwitcher : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                StartCoroutine(LoadNewScene("mainMenu"));
+                SceneManager.LoadScene("mainMenu");
             }
         }
     }

@@ -9710,7 +9710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4658a6a085c2cf941a33fd785287d1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 9
+  moveSpeed: 1.35
   Rb: {fileID: 1424974188}
   SR: {fileID: 1424974186}
   cam: {fileID: 591256119}

@@ -23,10 +23,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI StreakDisplay;
 
+    [SerializeField]
+    private TextMeshProUGUI PressAnywhereText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PressAnywhereText.text = "Press anywhere to play the next minigame!";
     }
 
     // Update is called once per frame
@@ -52,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         else
         {
             LivesDisplay.text = "You lost all lives, game over!";
+            PressAnywhereText.text = "Press anywhere to go back to the main menu!";
             
         }
     }

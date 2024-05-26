@@ -2898,6 +2898,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 269240985}
+    - target: {fileID: 7379657545540989419, guid: 4bdb941f1c1411e48a46af31b83c7e83,
+        type: 3}
+      propertyPath: remainingSeconds
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7722038809993175020, guid: 4bdb941f1c1411e48a46af31b83c7e83,
         type: 3}
       propertyPath: m_LocalPosition.x
