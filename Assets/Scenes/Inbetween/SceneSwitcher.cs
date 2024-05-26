@@ -65,56 +65,58 @@ public class SceneSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
-        // if no scene is loaded and the screen is clicked, load the help text for the next scene
-        if (!newSceneIsLoaded && Input.GetMouseButtonDown(0) && !sceneHelpTextIsBeingShown)
+        if (PlayerStats.lives > 0)
         {
-            sceneHelpTextIsBeingShown = true;
-            sceneHelpTextTimer = sceneHelpTextTime; // Reset the timer for the help text
+            if (!newSceneIsLoaded && Input.GetMouseButtonDown(0) && !sceneHelpTextIsBeingShown)
+            {
+                sceneHelpTextIsBeingShown = true;
+                sceneHelpTextTimer = sceneHelpTextTime; // Reset the timer for the help text
 
-            // Generate the next scene index
-            group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
-            nextSceneIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
+                // Generate the next scene index
+                group = Array.Find(scenesGroups, x => x.GroupName == bundle_selector.bundle);
+                nextSceneIndex = UnityEngine.Random.Range(0, group.sceneNames.Length);
 
-            // TODO: load the help text for the next scene
-            String gameName = group.sceneNames[nextSceneIndex];
+                String gameName = group.sceneNames[nextSceneIndex];
 
-            ScoreScreenTextObjects.SetActive(false);
-            helpTextObject.SetActive(true);
+                ScoreScreenTextObjects.SetActive(false);
+                helpTextObject.SetActive(true);
 
-            // set the help text
-            String text = Array.Find(HelpTexts, x => x.Name == gameName).text;
-            helpText.text = text;
+                // set the help text
+                String text = Array.Find(HelpTexts, x => x.Name == gameName).text;
+                helpText.text = text;
 
-            return;
+                return;
 
-        }
+            }
 
-        if (sceneHelpTextIsBeingShown) {
-            sceneHelpTextTimer -= Time.deltaTime; 
-            if (sceneHelpTextTimer <= 0.0f || Input.GetMouseButtonDown(0)) {  // If the timer is up, hide the help text and load the scene
-                sceneHelpTextIsBeingShown = false;
-                sceneHelpTextTimer = 0.0f;
-                // TODO: hide the help text for the next scene
-                helpTextObject.SetActive(false);
-                ScoreScreenTextObjects.SetActive(true);
+            if (sceneHelpTextIsBeingShown)
+            {
+                sceneHelpTextTimer -= Time.deltaTime;
+                if (sceneHelpTextTimer <= 0.0f || Input.GetMouseButtonDown(0))
+                {  // If the timer is up, hide the help text and load the scene
+                    sceneHelpTextIsBeingShown = false;
+                    sceneHelpTextTimer = 0.0f;
+                    helpTextObject.SetActive(false);
+                    ScoreScreenTextObjects.SetActive(true);
 
-
-                // Load the new scene
-                if (PlayerStats.lives <= 0)
-                {
-                    StartCoroutine(LoadNewScene("mainMenu"));
-                }
-                else
-                {
                     //LoadSequentialScene();
                     LoadScene(false);
                     newSceneIsLoaded = true;
                 }
             }
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene("mainMenu");
+            }
+        }
     }
+
+        // if no scene is loaded and the screen is clicked, load the help text for the next scene
+        
 
     IEnumerator LoadNewScene(string sceneName)
     {

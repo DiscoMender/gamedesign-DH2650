@@ -7,11 +7,8 @@ public class click_button_main : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void click()
-    {
+        controller.isPause = false;
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }
