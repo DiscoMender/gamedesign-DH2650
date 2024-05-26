@@ -447,11 +447,13 @@ MonoBehaviour:
     - RoadWithCars
     - Archery
     - Coins
+    - Shotting
   - GroupName: Raylan
     sceneNames:
     - FindTheKey
     - Bullets
     - Coins
+    - Shotting
   - GroupName: Azureus
     sceneNames:
     - Escaping
@@ -470,6 +472,8 @@ MonoBehaviour:
     text: Shoot the targets!
   - Name: Coins
     text: Collect them all!
+  - Name: Shotting
+    text: Shot the enemy!
   canvas: {fileID: 97106656}
   button: {fileID: 0}
   ScoreScreenTextObjects: {fileID: 394725498}
