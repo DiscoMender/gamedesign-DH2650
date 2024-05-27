@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blink and You’ll Miss It</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Blink and You’ll Miss It</h1>
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gameplay">Gameplay</a></li>
+                <li><a href="#mini-games">Mini-Games</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Introduction</h2>
+        <p>Blink and You’ll Miss It is a fast-paced mini-game collection...</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/watch?v=N0lASV-fel8" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="carousel">
+            <!-- Add images here -->
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+    </section>
+    <section id="about">
+        <h2>About the Game</h2>
+        <p>Game concept, genre, and target audience...</p>
+    </section>
+    <section id="gameplay">
+        <h2>Gameplay</h2>
+        <p>Explanation of gameplay and mechanics...</p>
+    </section>
+    <section id="mini-games">
+        <h2>Mini-Games</h2>
+        <div class="mini-game">
+            <h3>Find The Key</h3>
+            <p>Description, win/lose conditions, control system, level design, and art...</p>
+        </div>
+        <!-- Add more mini-games here -->
+    </section>
+    <section id="team">
+        <h2>Team</h2>
+        <div class="team-member">
+            <img src="member1.jpg" alt="Team Member 1">
+            <p>Name and brief biography...</p>
+        </div>
+        <!-- Add more team members here -->
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Blink and You’ll Miss It Team. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
