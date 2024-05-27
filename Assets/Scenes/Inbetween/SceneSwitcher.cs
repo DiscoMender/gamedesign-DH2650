@@ -99,6 +99,7 @@ public class SceneSwitcher : MonoBehaviour
                     sceneHelpTextTimer = 0.0f;
                     helpTextObject.SetActive(false);
                     ScoreScreenTextObjects.SetActive(true);
+                    canvas.gameObject.SetActive(false);
 
                     //LoadSequentialScene();
                     LoadScene(false);
